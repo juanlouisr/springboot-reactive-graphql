@@ -1,0 +1,35 @@
+type Student {
+    id: ID!
+    name: String
+    schoolId: ID!
+}
+
+type School {
+    id: ID!
+    name: String
+    students: [Student]
+}
+
+type Query {
+    studentByName(studentName: String): [Student]
+    schoolByName(schoolName: String): [School]
+    allSchool: [School]
+}
+
+type Mutation {
+    addStudent(addStudentInput: AddStudentInput): Student
+    addSchool(addSchoolInput: AddSchoolInput): School
+}
+
+type Subscription {
+    allStudent: Student
+}
+
+input AddStudentInput {
+    name: String
+    schoolId: ID!
+}
+
+input AddSchoolInput {
+    name: String
+}
